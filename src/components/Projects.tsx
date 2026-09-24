@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, X, ChevronDown, Check } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Project {
   id: number;
@@ -257,6 +258,26 @@ export function Projects() {
   const [isIncludedOpen, setIsIncludedOpen] = useState(false);
   const location = useLocation();
   const isProjectsPage = location.pathname === "/projects";
+  const { t, language } = useLanguage();
+
+  const filterCategories = [
+    {
+      id: "all",
+      label: language === "ar" ? "الكل" : language === "fr" ? "Tous les Projets" : language === "es" ? "Todos" : "All Projects",
+    },
+    {
+      id: "web",
+      label: language === "ar" ? "تطوير الويب" : language === "fr" ? "Développement Web" : language === "es" ? "Desarrollo Web" : "Web Development",
+    },
+    {
+      id: "branding",
+      label: language === "ar" ? "الهوية والتصميم" : language === "fr" ? "Branding & Design" : language === "es" ? "Diseño e Identidad" : "Branding",
+    },
+    {
+      id: "ai",
+      label: language === "ar" ? "حلول الذكاء الاصطناعي" : language === "fr" ? "Solutions IA" : language === "es" ? "Soluciones IA" : "AI Solutions",
+    },
+  ];
 
   const filteredProjects = projects.filter((project) => {
     if (filter === "all") return true;
@@ -282,13 +303,16 @@ export function Projects() {
     <section id="projects" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase rounded-full bg-primary/10">
+            {t.projects.badge}
+          </div>
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Our Projects
+            {t.projects.title}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -297,18 +321,13 @@ export function Projects() {
             transition={{ delay: 0.1 }}
             className="text-lg text-muted-foreground"
           >
-            Discover our latest work and creative solutions
+            {t.projects.subtitle}
           </motion.p>
         </div>
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {[
-            { id: "all", label: "All Projects" },
-            { id: "web", label: "Web Development" },
-            { id: "branding", label: "Branding" },
-            { id: "ai", label: "AI Solutions" },
-          ].map((category) => (
+          {filterCategories.map((category) => (
             <button
               key={category.id}
               onClick={() => setFilter(category.id as any)}

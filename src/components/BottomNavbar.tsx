@@ -1,16 +1,17 @@
 import { Home, Briefcase, Star, DollarSign } from "lucide-react";
-import { FaWolfPackBattalion } from "react-icons/fa";
 import { motion } from "motion/react";
-import { GlitchIcon } from "./GlitchIcon";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 export function BottomNavbar() {
+  const { t } = useLanguage();
+
   const navItems = [
-    { name: "Home", href: "/", icon: Home },
-    { name: "About", href: "/about", icon: Briefcase },
-    { name: "Logo", href: "/", icon: FaWolfPackBattalion, isLogo: true },
-    { name: "Projects", href: "/projects", icon: Star },
-    { name: "Pricing", href: "/pricing", icon: DollarSign },
+    { name: t.bottomNav.home, href: "/", icon: Home },
+    { name: t.bottomNav.about, href: "/about", icon: Briefcase },
+    { name: "Logo", href: "/", isLogo: true },
+    { name: t.bottomNav.projects, href: "/projects", icon: Star },
+    { name: t.bottomNav.pricing, href: "/pricing", icon: DollarSign },
   ];
 
   return (
@@ -22,21 +23,28 @@ export function BottomNavbar() {
     >
       <div className="flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
-          const Icon = item.icon;
-          
           if (item.isLogo) {
             return (
               <Link
                 key={item.name}
                 to={item.href}
-                className="flex flex-col items-center justify-center w-full h-full -mt-6"
+                className="flex flex-col items-center justify-center w-full h-full -mt-8"
+                aria-label="Home"
               >
-                <div className="bg-background p-3 rounded-full border border-border/40 shadow-lg relative text-primary">
-                  <GlitchIcon icon={Icon} className="w-8 h-8" />
+                <div className="w-16 h-16 bg-background p-2 rounded-full border-2 border-primary/40 shadow-2xl ring-4 ring-background/90 relative flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+                  <img
+                    src="/images/favicon.png"
+                    alt="ATLAS 1337"
+                    className="w-12 h-12 object-contain"
+                    loading="eager"
+                    decoding="sync"
+                  />
                 </div>
               </Link>
             );
           }
+
+          const Icon = item.icon!;
 
           return (
             <Link

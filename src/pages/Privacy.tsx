@@ -28,7 +28,7 @@ export function Privacy() {
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">5. Your Rights</h2>
           <p className="mb-4">
-            You have the right to access, correct, or delete your personal information. Please contact us at Support@nexa1337.com to exercise these rights.
+            You have the right to access, correct, or delete your personal information. Please contact us at atlas1337agency@gmail.com or support@atlas1337agency.com to exercise these rights.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4">6. Changes to This Policy</h2>

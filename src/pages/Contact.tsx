@@ -1,21 +1,27 @@
 import { motion } from "motion/react";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 export function Contact() {
+  const { t, language } = useLanguage();
+
   return (
     <div className="pt-24 pb-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
+          <div className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-primary uppercase rounded-full bg-primary/10">
+            {t.contact.badge}
+          </div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold tracking-tight mb-4"
           >
-            Get in Touch
+            {t.contact.title} <span className="text-primary">{t.contact.titleHighlight}</span>
           </motion.h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Have a project in mind? We'd love to hear from you. Let's create something amazing together.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            {t.contact.subtitle}
           </p>
         </div>
 
@@ -28,41 +34,46 @@ export function Contact() {
             className="space-y-8"
           >
             <div className="bg-card p-8 rounded-2xl border border-border/50 shadow-sm">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-6">{t.contact.infoTitle}</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
                     <Mail className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Email Us</h3>
-                    <a href="mailto:Support@nexa1337.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      Support@nexa1337.com
-                    </a>
+                    <h3 className="font-semibold mb-1">{t.contact.emailUs}</h3>
+                    <div className="flex flex-col space-y-1">
+                      <a href="mailto:atlas1337agency@gmail.com" className="text-muted-foreground hover:text-primary transition-colors text-sm break-all">
+                        atlas1337agency@gmail.com
+                      </a>
+                      <a href="mailto:support@atlas1337agency.com" className="text-muted-foreground hover:text-primary transition-colors text-sm break-all">
+                        support@atlas1337agency.com
+                      </a>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg text-primary">
+                  <div className="bg-primary/10 p-3 rounded-lg text-primary flex-shrink-0">
                     <FaWhatsapp size={24} />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">WhatsApp</h3>
-                    <a href="https://wa.me/212723242286" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <h3 className="font-semibold mb-1">{t.contact.callUs}</h3>
+                    <a href="https://wa.me/212723242286" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors font-mono">
                       +212 723 242 286
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-primary/10 p-3 rounded-lg">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Visit Us</h3>
-                    <p className="text-muted-foreground">
-                      N E X A 1337 - Digital Agency<br />
-                      Rabat, Morocco
+                    <h3 className="font-semibold mb-1">{t.contact.visitUs}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      ATLAS 1337 - Digital Agency<br />
+                      {t.contact.locationText}
                     </p>
                   </div>
                 </div>
@@ -70,20 +81,15 @@ export function Contact() {
             </div>
 
             <div className="bg-card p-8 rounded-2xl border border-border/50 shadow-sm">
-              <h2 className="text-2xl font-bold mb-4">Business Hours</h2>
-              <div className="space-y-2 text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span>10:00 AM - 2:00 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Sunday</span>
-                  <span>Closed</span>
-                </div>
+              <div className="flex items-center gap-3 mb-4">
+                <Clock className="w-5 h-5 text-primary" />
+                <h2 className="text-2xl font-bold">{t.contact.workingHours}</h2>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {t.contact.workingHoursText}
+              </p>
+              <div className="mt-4 pt-4 border-t border-border/40 text-xs text-muted-foreground">
+                {language === "ar" ? "نقدم الدعم والرد الفوري لجميع العملاء عبر واتساب 24/7." : language === "fr" ? "Assistance rapide et continue disponible via WhatsApp 24/7." : language === "es" ? "Soporte rápido y continuo disponible por WhatsApp 24/7." : "Rapid response and continuous support available via WhatsApp 24/7."}
               </div>
             </div>
           </motion.div>
@@ -103,7 +109,7 @@ export function Contact() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="NEXA1337 Location"
+              title="ATLAS 1337 Location"
             ></iframe>
           </motion.div>
         </div>
