@@ -73,13 +73,13 @@ const projects: Project[] = [
     title: "Premium Beauty & Hairdressers WordPress Theme",
     category: "Web Development",
     description: "Create a stunning online presence for your beauty salon, spa, or hairdressing ...",
-    image: "https://spalabele.wpengine.com/wp-content/uploads/2023/07/home-1-768x1024.jpg",
+    image: "https://curly.qodeinteractive.com/wp-content/uploads/2018/05/landing-home-img-1.jpg",
     popupData: {
       images: [
-        "https://spalabele.wpengine.com/wp-content/uploads/2023/07/home-1-768x1024.jpg",
+        "https://curly.qodeinteractive.com/wp-content/uploads/2018/05/landing-home-img-1.jpg",
+        "https://reina.qodeinteractive.com/wp-content/uploads/2020/12/landing-iwt-img1.jpg",
         "https://reina.qodeinteractive.com/wp-content/uploads/2020/12/landing-iwt-img3.jpg",
         "https://reina.qodeinteractive.com/wp-content/uploads/2020/12/landing-iwt-img8.jpg",
-        "https://curly.qodeinteractive.com/wp-content/uploads/2018/05/landing-home-img-1.jpg",
         "https://curly.qodeinteractive.com/wp-content/uploads/2018/05/landing-home-img-4.jpg",
       ],
       client: "Salons, Spas",

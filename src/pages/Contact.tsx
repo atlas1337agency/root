@@ -71,10 +71,19 @@ export function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">{t.contact.visitUs}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      ATLAS 1337 - Digital Agency<br />
-                      {t.contact.locationText}
-                    </p>
+                    <a
+                      href="https://maps.app.goo.gl/v77v4HRfkv9hEfjZ9"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block text-muted-foreground hover:text-primary transition-colors text-sm leading-relaxed"
+                    >
+                      <span className="font-medium text-foreground group-hover:text-primary transition-colors">ATLAS 1337 - Digital Agency</span>
+                      <br />
+                      <span>{t.contact.locationText}</span>
+                      <span className="mt-1.5 flex items-center gap-1 text-xs text-primary font-semibold group-hover:underline">
+                        {language === "ar" ? "عرض على خرائط Google ↗" : language === "fr" ? "Voir sur Google Maps ↗" : language === "es" ? "Ver en Google Maps ↗" : "View on Google Maps ↗"}
+                      </span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -99,18 +108,34 @@ export function Contact() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3 }}
-            className="h-full min-h-[400px] bg-muted rounded-2xl overflow-hidden border border-border/50 shadow-sm"
+            className="flex flex-col h-full min-h-[450px] bg-muted rounded-2xl overflow-hidden border border-border/50 shadow-sm"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.4841400990763!2d-6.832365125201131!3d34.031450118829625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda76b146a4caac9%3A0xdc0f711f384b0c52!2sN%20E%20X%20A%201337%20-%20Digital%20Agency!5e0!3m2!1sen!2sma!4v1772996838985!5m2!1sen!2sma"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: "500px" }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="ATLAS 1337 Location"
-            ></iframe>
+            <div className="px-4 py-2.5 bg-card border-b border-border/40 flex items-center justify-between text-xs">
+              <span className="flex items-center gap-1.5 font-medium text-foreground">
+                <MapPin className="w-3.5 h-3.5 text-primary" />
+                ATLAS 1337 Agency
+              </span>
+              <a
+                href="https://maps.app.goo.gl/v77v4HRfkv9hEfjZ9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-semibold flex items-center gap-1"
+              >
+                {language === "ar" ? "فتح في خرائط Google ↗" : language === "fr" ? "Ouvrir dans Google Maps ↗" : language === "es" ? "Abrir en Google Maps ↗" : "Open in Google Maps ↗"}
+              </a>
+            </div>
+            <div className="flex-1 w-full min-h-[450px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.4957643038676!2d-6.831663!3d34.031219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x21389a2d4ab0608b%3A0xc7cf2163e7a46453!2sATLAS%201337%20Agency!5e0!3m2!1sen!2sma!4v1772996838985!5m2!1sen!2sma"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: "450px" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ATLAS 1337 Location"
+              ></iframe>
+            </div>
           </motion.div>
         </div>
       </div>

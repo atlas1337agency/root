@@ -151,9 +151,14 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground text-sm">
+                <a
+                  href="https://maps.app.goo.gl/v77v4HRfkv9hEfjZ9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
                   {t.contact.locationText}
-                </span>
+                </a>
               </li>
             </ul>
           </div>
